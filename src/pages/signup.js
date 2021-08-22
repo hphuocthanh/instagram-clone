@@ -71,9 +71,13 @@ export default function Signup() {
           <h1 className="flex justify-center w-full">
             <img src="/images/logo.png" alt="Instagramme" className="mt-2 w-6/12" />
           </h1>
-          {err && <p className="mb-4 text-xs text-red-primary">{err}</p>}
+          {err && (
+            <p className="mb-4 text-xs text-red-primary" data-testid="error">
+              {err}
+            </p>
+          )}
 
-          <form onSubmit={handleSignup} method="POST">
+          <form onSubmit={handleSignup} method="POST" data-testid="signup">
             <input
               aria-label="Enter your username"
               type="text"
@@ -120,7 +124,7 @@ export default function Signup() {
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">
             Have an account?{' '}
-            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
+            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
               Log in
             </Link>
           </p>

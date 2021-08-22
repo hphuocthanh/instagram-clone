@@ -38,9 +38,13 @@ export default function Login() {
           <h1 className="flex justify-center w-full">
             <img src="/images/logo.png" alt="Instagramme" className="mt-2 w-6/12" />
           </h1>
-          {err && <p className="mb-4 text-xs text-red-primary">{err}</p>}
+          {err && (
+            <p data-testid="error" className="mb-4 text-xs text-red-primary">
+              {err}
+            </p>
+          )}
 
-          <form onSubmit={handleLogin} method="POST">
+          <form onSubmit={handleLogin} method="POST" data-testid="login">
             <input
               aria-label="Enter your email address"
               type="email"
@@ -71,7 +75,7 @@ export default function Login() {
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">
             Don't have an account?{' '}
-            <Link to={ROUTES.SIGNUP} className="font-bold text-blue-medium">
+            <Link to={ROUTES.SIGNUP} className="font-bold text-blue-medium" data-testid="signup">
               Sign up
             </Link>
           </p>
