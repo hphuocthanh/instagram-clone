@@ -640,10 +640,6 @@ video {
   margin-right: 1.5rem;
 }
 
-.mr-10 {
-  margin-right: 2.5rem;
-}
-
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1056,6 +1052,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mr-10 {
+    margin-right: 2.5rem;
+  }
+
   .md\:h-20 {
     height: 5rem;
   }

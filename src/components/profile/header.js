@@ -90,15 +90,15 @@ export default function Header({
             <Skeleton count={1} width={677} height={24} />
           ) : (
             <>
-              <p className="mr-10">
+              <p className="mr-3 md:mr-10">
                 <span className="font-semibold">{photosCount}</span>{' '}
                 {photosCount === 1 ? 'photo' : 'photos'}
               </p>
-              <p className="mr-10">
+              <p className="mr-3 md:mr-10">
                 <span className="font-semibold">{followerCount}</span>{' '}
                 {followerCount === 1 ? 'follower' : 'followers'}
               </p>
-              <p className="mr-10">
+              <p className="mr-3 md:mr-10">
                 <span className="font-semibold">{following.length}</span> following
               </p>
             </>
