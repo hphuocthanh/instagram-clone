@@ -15,28 +15,7 @@ describe('<NotFound />', () => {
     await act(async () => {
       await getUserByUserId.mockImplementation(() => [userFixture]);
 
-      const { queryByText } = render(
-        <Router>
-          <FirebaseContext.Provider value={{}}>
-            <UserContext.Provider value={{ user: { uid: 1 } }}>
-              <NotFound />
-            </UserContext.Provider>
-          </FirebaseContext.Provider>
-        </Router>
-      );
-
-      await waitFor(() => {
-        expect(queryByText('Log In')).toBeFalsy();
-        expect(queryByText('404 | Not Found!')).toBeTruthy();
-      });
-    });
-  });
-
-  it('renders the notfound page with an anonymous user', async () => {
-    await act(async () => {
-      await getUserByUserId.mockImplementation(() => []);
-
-      const { queryByText } = render(
+      const { getByText } = render(
         <Router>
           <FirebaseContext.Provider value={{}}>
             <UserContext.Provider value={{ user: {} }}>
@@ -47,8 +26,29 @@ describe('<NotFound />', () => {
       );
 
       await waitFor(() => {
-        expect(queryByText('Log In')).toBeTruthy();
-        expect(queryByText('404 | Not Found!')).toBeTruthy();
+        expect(getByText('404 | Not Found!')).toBeTruthy();
+        expect(document.title).toEqual('Not Found - Instagramme');
+      });
+    });
+  });
+
+  it('renders the notfound page with no active logged in user', async () => {
+    await act(async () => {
+      await getUserByUserId.mockImplementation(() => []);
+
+      const { getByText } = render(
+        <Router>
+          <FirebaseContext.Provider value={{}}>
+            <UserContext.Provider value={{ user: null }}>
+              <NotFound />
+            </UserContext.Provider>
+          </FirebaseContext.Provider>
+        </Router>
+      );
+
+      await waitFor(() => {
+        expect(document.title).toEqual('Not Found - Instagramme');
+        expect(getByText('404 | Not Found!')).toBeTruthy();
       });
     });
   });

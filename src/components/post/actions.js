@@ -31,6 +31,7 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
       <div className="flex justify-between p-4">
         <div className="flex">
           <svg
+            data-testid={`like-photo-${docId}`}
             xmlns="http://www.w3.org/2000/svg"
             className={`h-8 w-8 mr-3 select-none cursor-pointer ${
               toggleLiked ? 'fill-red text-red-primary' : 'text-black-light'
@@ -53,6 +54,7 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
             />
           </svg>
           <svg
+            data-testid={`focus-input-${docId}`}
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 select-none cursor-pointer"
             fill="none"
