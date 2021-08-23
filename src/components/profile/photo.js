@@ -4,14 +4,22 @@ import ModalImage, { Lightbox } from 'react-modal-image';
 
 export default function Photo({ photo, index }) {
   const [openPhoto, setOpenPhoto] = useState(false);
-
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   return (
     <div
       className="relative group cursor-pointer"
-      onClick={() => setOpenPhoto(!openPhoto)}
+      onClick={() => {
+        if (!isPhotoOpen && !openPhoto) {
+          setIsPhotoOpen(true);
+          setOpenPhoto(true);
+        }
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          setOpenPhoto(!openPhoto);
+          if (!isPhotoOpen && !openPhoto) {
+            setIsPhotoOpen(true);
+            setOpenPhoto(true);
+          }
         }
       }}
       tabIndex={index}
@@ -24,7 +32,10 @@ export default function Photo({ photo, index }) {
           large={photo.imageSrc}
           alt={photo.caption}
           showRotate
-          onClose={() => setOpenPhoto(!openPhoto)}
+          onClose={() => {
+            setIsPhotoOpen(false);
+            setOpenPhoto(false);
+          }}
         />
       ) : (
         <ModalImage small={photo.imageSrc} alt={photo.caption} />
