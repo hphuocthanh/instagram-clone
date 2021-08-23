@@ -29,14 +29,14 @@ export default function Login() {
     document.title = 'Login - Instagramme';
   }, []);
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <div className="flex w-3/5">
+    <div className="container flex flex-col lg:flex-row mx-auto max-w-screen-md items-center h-screen px-4 lg:px-0">
+      <div className="hidden lg:flex w-full lg:w-3/5">
         <img src="/images/iphone-with-profile.jpg" alt="Iphone with Instagramme" />
       </div>
-      <div className="flex flex-col w-2/5 items-center">
-        <div className="flex flex-col bg-white p-4 border border-gray-primary mb-4 rounded">
+      <div className="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
+        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
-            <img src="/images/logo.png" alt="Instagramme" className="mt-2 w-6/12" />
+            <img src="/images/logo.png" alt="Instagramme" className="mt-2 mb-4" />
           </h1>
           {err && (
             <p data-testid="error" className="mb-4 text-xs text-red-primary">
