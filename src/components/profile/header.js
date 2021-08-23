@@ -91,7 +91,8 @@ export default function Header({
           ) : (
             <>
               <p className="mr-10">
-                <span className="font-semibold">{photosCount}</span> photos
+                <span className="font-semibold">{photosCount}</span>{' '}
+                {photosCount === 1 ? 'photo' : 'photos'}
               </p>
               <p className="mr-10">
                 <span className="font-semibold">{followerCount}</span>{' '}
