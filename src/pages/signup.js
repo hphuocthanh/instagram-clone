@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { RoughNotation } from 'react-rough-notation';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
 import { doesUsernameExist } from '../services/firebase';
@@ -62,18 +63,26 @@ export default function Signup() {
     document.title = 'Signup - Instagramme';
   }, []);
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <div className="flex w-3/5">
-        <img src="/images/iphone-with-profile.jpg" alt="Iphone with Instagramme" />
+    <div className="container flex mx-auto max-w-screen-md items-center h-screen px-4 lg:px-0">
+      <div className="hidden lg:flex w-full lg:w-3/5">
+        <img
+          src="/images/iphone-with-profile.jpg"
+          alt="Iphone with Instagramme"
+          className="object-scale-down"
+        />
       </div>
-      <div className="flex flex-col w-2/5 items-center">
-        <div className="flex flex-col bg-white p-4 border border-gray-primary mb-4 rounded">
+      <div className="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
+        <div className="flex flex-col bg-white p-4 items-center border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
-            <img src="/images/logo.png" alt="Instagramme" className="mt-2 w-6/12" />
+            <img src="/images/logo.png" alt="Instagramme" className="mt-2 mb-4" />
           </h1>
-          {err && <p className="mb-4 text-xs text-red-primary">{err}</p>}
+          {err && (
+            <p className="mb-4 text-xs text-red-primary" data-testid="error">
+              {err}
+            </p>
+          )}
 
-          <form onSubmit={handleSignup} method="POST">
+          <form onSubmit={handleSignup} method="POST" data-testid="signup">
             <input
               aria-label="Enter your username"
               type="text"
@@ -119,9 +128,11 @@ export default function Signup() {
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">
-            Have an account?{' '}
-            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
-              Log in
+            <RoughNotation type="underline" show animationDelay={1000} color="#005c98">
+              Have an account?
+            </RoughNotation>{' '}
+            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
+              Login
             </Link>
           </p>
         </div>

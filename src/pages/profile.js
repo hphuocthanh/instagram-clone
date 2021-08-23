@@ -14,12 +14,12 @@ export default function Profile() {
     async function checkUserExists() {
       const _user = await getUserByUsername(username);
       if (_user?.length > 0) {
-        setUser(_user[0]);
+        await setUser(_user[0]);
+        document.title = `${_user[0].fullName} (${username})  ·  Instagramme`;
       } else {
         history.push(ROUTES.NOT_FOUND);
       }
     }
-
     checkUserExists();
   }, [username, history]);
 

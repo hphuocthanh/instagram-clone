@@ -6,19 +6,25 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "babel-loader": "8.1.0",
     "date-fns": "^2.23.0",
     "firebase": "^8.9.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-loading-skeleton": "^2.2.0",
+    "react-modal-image": "^2.5.0",
+    "react-rough-notation": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webpack": "4.44.2"
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^6.2.0",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "autoprefixer": "^10.3.1",
     "babel-eslint": "^10.1.0",
+    "cypress": "^8.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -41,7 +47,8 @@
     "react-scripts:dist": "react-scripts build",
     "start": "run-p watch:css react-scripts:start",
     "build": "run-s build:css react-scripts:dist",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
+    "e2e": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,6 +56,29 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!<rootDir>/src/App.js",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/src/seed.js",
+      "!<rootDir>/src/fixtures/*.js",
+      "!<rootDir>/src/hooks/*.js",
+      "!<rootDir>/src/helpers/*.js",
+      "!<rootDir>/src/services/firebase.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      },
+      "coverageReporters": [
+        "html",
+        "text"
+      ]
+    }
   },
   "browserslist": {
     "production": [

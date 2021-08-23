@@ -8,9 +8,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      cursor: ['disabled']
-    },
-    display: ['group-hover']
+      cursor: ['disabled'],
+      display: ['group-hover']
+    }
   },
   theme: {
     fill: (theme) => ({

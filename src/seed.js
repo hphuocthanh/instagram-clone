@@ -8,8 +8,8 @@ export function seedDatabase(firebase) {
       username: 'hphuocthanh',
       fullName: 'Thanh Hoang Phuoc',
       emailAddress: 'phuocthanhqt113@gmail.com',
-      following: ['2'],
-      followers: ['2', '3', '4'],
+      following: ['4'],
+      followers: [],
       dateCreated: Date.now()
     },
     {

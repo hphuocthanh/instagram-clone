@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { RoughNotation } from 'react-rough-notation';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
 
@@ -29,18 +30,22 @@ export default function Login() {
     document.title = 'Login - Instagramme';
   }, []);
   return (
-    <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-      <div className="flex w-3/5">
+    <div className="container flex flex-col lg:flex-row mx-auto max-w-screen-md items-center h-screen px-4 lg:px-0">
+      <div className="hidden lg:flex w-full lg:w-3/5">
         <img src="/images/iphone-with-profile.jpg" alt="Iphone with Instagramme" />
       </div>
-      <div className="flex flex-col w-2/5 items-center">
-        <div className="flex flex-col bg-white p-4 border border-gray-primary mb-4 rounded">
+      <div className="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
+        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
-            <img src="/images/logo.png" alt="Instagramme" className="mt-2 w-6/12" />
+            <img src="/images/logo.png" alt="Instagramme" className="mt-2 mb-4" />
           </h1>
-          {err && <p className="mb-4 text-xs text-red-primary">{err}</p>}
+          {err && (
+            <p data-testid="error" className="mb-4 text-xs text-red-primary">
+              {err}
+            </p>
+          )}
 
-          <form onSubmit={handleLogin} method="POST">
+          <form onSubmit={handleLogin} method="POST" data-testid="login">
             <input
               aria-label="Enter your email address"
               type="email"
@@ -64,14 +69,18 @@ export default function Login() {
                 isInvalid && `opacity-50`
               }`}
             >
-              Log In
+              Login
             </button>
           </form>
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">
-            Don't have an account?{' '}
-            <Link to={ROUTES.SIGNUP} className="font-bold text-blue-medium">
+            <span>
+              <RoughNotation type="underline" show animationDelay={1000} color="#005c98">
+                Don't have an account?
+              </RoughNotation>
+            </span>{' '}
+            <Link to={ROUTES.SIGNUP} className="font-bold text-blue-medium" data-testid="signup">
               Sign up
             </Link>
           </p>

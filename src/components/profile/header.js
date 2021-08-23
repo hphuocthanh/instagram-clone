@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
+import { RoughNotation } from 'react-rough-notation';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import UserContext from '../../context/user';
@@ -47,7 +48,7 @@ export default function Header({
       <div className="container flex justify-center items-center">
         {profileUsername ? (
           <img
-            className="rounded-full h-40 w-40 flex"
+            className="rounded-full h-16 w-16 md:h-20 md:w-20 lg:h-40 lg:w-40 flex"
             alt={`${profileUsername} profile`}
             src={`/images/avatars/${
               profileUsername === 'hphuocthanh' ||
@@ -59,12 +60,16 @@ export default function Header({
             }.jpg`}
           />
         ) : (
-          <Skeleton count={1} width={160} height={160} circle />
+          <Skeleton count={1} width={64} height={64} circle />
         )}
       </div>
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
-          <p className="text-3xl font-light mr-4">{profileUsername}</p>
+          <p className="text-3xl font-light mr-4">
+            <RoughNotation type="underline" show animationDelay={3000}>
+              {profileUsername}
+            </RoughNotation>
+          </p>
           {activeBtnFollow && (
             <button
               type="button"
@@ -80,7 +85,7 @@ export default function Header({
             </button>
           )}
         </div>
-        <div className="container flex mt-4">
+        <div className="container flex mt-4 flex-row">
           {!followers || !following ? (
             <Skeleton count={1} width={677} height={24} />
           ) : (
