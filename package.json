@@ -19,6 +19,7 @@
     "@welldone-software/why-did-you-render": "^6.2.0",
     "autoprefixer": "^10.3.1",
     "babel-eslint": "^10.1.0",
+    "cypress": "^8.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -42,6 +43,7 @@
     "start": "run-p watch:css react-scripts:start",
     "build": "run-s build:css react-scripts:dist",
     "test": "react-scripts test --coverage --watchAll",
+    "e2e": "cypress open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
