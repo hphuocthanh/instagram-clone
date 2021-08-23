@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { RoughNotation } from 'react-rough-notation';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
 import { doesUsernameExist } from '../services/firebase';
@@ -127,9 +128,11 @@ export default function Signup() {
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">
-            Have an account?{' '}
+            <RoughNotation type="underline" show animationDelay={1000} color="#005c98">
+              Have an account?
+            </RoughNotation>{' '}
             <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
-              Log in
+              Login
             </Link>
           </p>
         </div>

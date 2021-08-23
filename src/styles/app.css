@@ -401,7 +401,8 @@ textarea::placeholder {
   color: #a1a1aa;
 }
 
-button {
+button,
+[role="button"] {
   cursor: pointer;
 }
 
@@ -1010,6 +1011,10 @@ video {
 .text-red-primary {
   --tw-text-opacity: 1;
   color: rgba(237, 73, 86, var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .opacity-50 {

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
+import { RoughNotation } from 'react-rough-notation';
 import useUser from '../../hooks/use-user';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 import UserContext from '../../context/user';
@@ -64,7 +65,11 @@ export default function Header({
       </div>
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
-          <p className="text-3xl font-light mr-4">{profileUsername}</p>
+          <p className="text-3xl font-light mr-4">
+            <RoughNotation type="underline" show animationDelay={3000}>
+              {profileUsername}
+            </RoughNotation>
+          </p>
           {activeBtnFollow && (
             <button
               type="button"

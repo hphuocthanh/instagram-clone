@@ -42,4 +42,16 @@ describe('Login', () => {
       );
     });
   });
+
+  it('navigates to the sign up page and back again', () => {
+    cy.get('[data-testid="signup"]').click();
+    cy.get('body').within(() => {
+      cy.get('div').should('contain.text', 'Have an account? Login');
+    });
+
+    cy.get('[data-testid="login"]').click();
+    cy.get('body').within(() => {
+      cy.get('div').should('contain.text', "Don't have an account? Sign up");
+    });
+  });
 });
