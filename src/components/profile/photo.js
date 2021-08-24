@@ -4,20 +4,17 @@ import ModalImage, { Lightbox } from 'react-modal-image';
 
 export default function Photo({ photo, index }) {
   const [openPhoto, setOpenPhoto] = useState(false);
-  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   return (
     <div
       className="relative group cursor-pointer"
       onClick={() => {
-        if (!isPhotoOpen && !openPhoto) {
-          setIsPhotoOpen(true);
+        if (!openPhoto) {
           setOpenPhoto(true);
         }
       }}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          if (!isPhotoOpen && !openPhoto) {
-            setIsPhotoOpen(true);
+          if (!openPhoto) {
             setOpenPhoto(true);
           }
         }
@@ -33,7 +30,6 @@ export default function Photo({ photo, index }) {
           alt={photo.caption}
           showRotate
           onClose={() => {
-            setIsPhotoOpen(false);
             setOpenPhoto(false);
           }}
         />

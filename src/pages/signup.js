@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { RoughNotation } from 'react-rough-notation';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
-import { doesUsernameExist } from '../services/firebase';
+import { doesUsernameExist, updateFollowedUserFollowers } from '../services/firebase';
 
 export default function Signup() {
   const history = useHistory();
@@ -46,6 +46,13 @@ export default function Signup() {
             emailAddress: emailAddress.toLowerCase(),
             dataCreated: Date.now()
           });
+
+        // docId of ldwook
+        await updateFollowedUserFollowers(
+          'J6bywmi4J8azcyelBjXV',
+          createdUserResult.user.uid,
+          false
+        );
 
         history.push(ROUTES.DASHBOARD);
       } catch (error) {
