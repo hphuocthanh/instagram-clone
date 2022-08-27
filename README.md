@@ -52,7 +52,7 @@ This was a long project in an attempt to get familiar with the React codebase in
 
 I coded along with the [tutorial](https://youtu.be/x_EEwGe-a9o) of Karl Hadwen. I modified each section a little bit, added subtle text animations and added popup boxes for photos in the profile page. 
 
-I also did full coverage on testing and more but it's a private repo. If you want to see how the testing is done, consider supporting Karl Hadwen himself by buying the paid video which includes the testing process.
+I also did full coverage on testing. If you want to see how the testing is done, consider supporting Karl Hadwen himself by buying the paid video which includes the testing process.
 
 At the end of the day, this project uses React, React-Router, TailwindCSS, Firebase, React testing library and Cypress testing.
 
